@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="script-src 'self' 'unsafe-inline'"
+  />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>StatCode - HTTP Status Code Explorer</title>
+</head>
+<body>
+  <div class="container">
+    <h1>🔍HTTP Status Code Explorer</h1>
+
+    <div class="search-box">
+      <input type="number" id="codeInput" placeholder="Enter status code" min="100" max="599">
+      <button id="searchBtn">Search</button>
+    </div>
+
+    <div id="result" class="result hidden"></div>
+  </div>
+
+  <script src="js/renderer.js"></script>
+</body>
+</html>

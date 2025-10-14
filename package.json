@@ -1,0 +1,24 @@
+{
+  "name": "stat-code",
+  "productName": "StatCode",
+  "version": "1.0.0",
+  "description": "Explore HTTP status codes",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "nodemon --exec electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/icon.ico --prune=true --out=dist",
+    "package-win": "electron-packager . --overwrite --platform=win32 --arch=x64 --icon=assets/icons/icon.ico --prune=false --out=dist",
+    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/icon.ico --prune=false --out=dist"
+  },
+  "keywords": [
+    "Electron"
+  ],
+  "author": "Beniamin Hekimian",
+  "license": "MIT",
+  "devDependencies": {
+    "@electron/packager": "^18.4.4",
+    "electron": "^38.2.1",
+    "nodemon": "^3.1.10"
+  }
+}

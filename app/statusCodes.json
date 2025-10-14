@@ -1,0 +1,490 @@
+{
+  "100": {
+    "code": 100,
+    "name": "Continue",
+    "category": "Informational",
+    "description": "The client should continue with its request or ignore if already finished.",
+    "example": "Client sends a large POST in chunks. Server sends 100 Continue to indicate client may send next chunk.",
+    "methods": ["GET"]
+  },
+  "101": {
+    "code": 101,
+    "name": "Switching Protocols",
+    "category": "Informational",
+    "description": "Server is switching protocols as requested by the client via Upgrade header.",
+    "example": "Client requests HTTP → WebSocket upgrade; server responds with 101.",
+    "methods": ["GET"]
+  },
+  "102": {
+    "code": 102,
+    "name": "Processing",
+    "category": "Informational",
+    "description": "Used in WebDAV: server has received request but is still processing, no response yet.",
+    "example": "Long-running WebDAV operation; server sends interim 102.",
+    "methods": ["GET"]
+  },
+  "103": {
+    "code": 103,
+    "name": "Early Hints",
+    "category": "Informational",
+    "description": "Primarily used with Link header to preload resources while server prepares final response.",
+    "example": "Server hints client to preload CSS/JS before sending final 200.",
+    "methods": ["GET"]
+  },
+  "200": {
+    "code": 200,
+    "name": "OK",
+    "category": "Success",
+    "description": "The request succeeded. The meaning of success depends on the HTTP method.",
+    "example": "GET: resource fetched; POST: action accepted and response returned.",
+    "methods": ["GET", "POST", "PUT", "DELETE"]
+  },
+  "201": {
+    "code": 201,
+    "name": "Created",
+    "category": "Success",
+    "description": "The request succeeded and led to the creation of a new resource.",
+    "example": "POST /users → new user created, return 201 with resource location.",
+    "methods": ["POST", "PUT"]
+  },
+  "202": {
+    "code": 202,
+    "name": "Accepted",
+    "category": "Success",
+    "description": "The request has been accepted for processing, but the processing is not complete.",
+    "example": "Client submits job request that will be processed asynchronously.",
+    "methods": ["POST", "PUT"]
+  },
+  "203": {
+    "code": 203,
+    "name": "Non-Authoritative Information",
+    "category": "Success",
+    "description": "Returned metadata is from a local or third‑party copy, not the origin server.",
+    "example": "Proxy returns metadata different from origin but valid.",
+    "methods": ["GET"]
+  },
+  "204": {
+    "code": 204,
+    "name": "No Content",
+    "category": "Success",
+    "description": "Server successfully processed request but returns no content.",
+    "example": "DELETE request completed; no content in response.",
+    "methods": ["DELETE", "PUT", "POST"]
+  },
+  "205": {
+    "code": 205,
+    "name": "Reset Content",
+    "category": "Success",
+    "description": "Instructs user agent to reset document view that sent the request.",
+    "example": "Forms reset after submission.",
+    "methods": ["POST", "PUT"]
+  },
+  "206": {
+    "code": 206,
+    "name": "Partial Content",
+    "category": "Success",
+    "description": "Server is delivering only part of the resource (range request).",
+    "example": "Client requests bytes 0–499 of a large file.",
+    "methods": ["GET"]
+  },
+  "207": {
+    "code": 207,
+    "name": "Multi-Status",
+    "category": "Success",
+    "description": "WebDAV: conveys multiple status codes for multiple independent operations.",
+    "example": "Batch WebDAV request with status per resource.",
+    "methods": ["GET"]
+  },
+  "208": {
+    "code": 208,
+    "name": "Already Reported",
+    "category": "Success",
+    "description": "Used inside WebDAV to avoid repeating bindings.",
+    "example": "In multi-status, avoid duplicating members in response.",
+    "methods": ["GET"]
+  },
+  "226": {
+    "code": 226,
+    "name": "IM Used",
+    "category": "Success",
+    "description": "Server has fulfilled GET request for current instance-manipulations applied.",
+    "example": "Delta encoding transformations applied on resource.",
+    "methods": ["GET"]
+  },
+  "300": {
+    "code": 300,
+    "name": "Multiple Choices",
+    "category": "Redirection",
+    "description": "There are multiple representations; user or agent chooses one.",
+    "example": "Client sees a list of available languages or file types.",
+    "methods": ["GET"]
+  },
+  "301": {
+    "code": 301,
+    "name": "Moved Permanently",
+    "category": "Redirection",
+    "description": "The resource has been permanently moved to a new URL.",
+    "example": "Old URL → new URL via Location header.",
+    "methods": ["GET"]
+  },
+  "302": {
+    "code": 302,
+    "name": "Found",
+    "category": "Redirection",
+    "description": "The resource is temporarily under a different URI.",
+    "example": "Temporary redirect, clients still use original URI for future requests.",
+    "methods": ["GET", "POST"]
+  },
+  "303": {
+    "code": 303,
+    "name": "See Other",
+    "category": "Redirection",
+    "description": "Redirect with GET to another URI even if original method was POST.",
+    "example": "After a POST, server directs client to GET a result page.",
+    "methods": ["GET", "POST"]
+  },
+  "304": {
+    "code": 304,
+    "name": "Not Modified",
+    "category": "Redirection",
+    "description": "Resource has not been modified; client can use cached version.",
+    "example": "Client sends conditional GET with If-Modified-Since and gets 304.",
+    "methods": ["GET"]
+  },
+  "307": {
+    "code": 307,
+    "name": "Temporary Redirect",
+    "category": "Redirection",
+    "description": "Redirect to another URI but client must use same method.",
+    "example": "Temporary redirect preserving POST method.",
+    "methods": ["GET", "POST"]
+  },
+  "308": {
+    "code": 308,
+    "name": "Permanent Redirect",
+    "category": "Redirection",
+    "description": "Same as 301 but method must not change.",
+    "example": "Permanent redirect, client must reuse same method at new URI.",
+    "methods": ["GET", "POST"]
+  },
+  "400": {
+    "code": 400,
+    "name": "Bad Request",
+    "category": "Client Error",
+    "description": "Server cannot or will not process request due to client error.",
+    "example": "Malformed JSON in request body.",
+    "methods": ["GET", "POST", "PUT", "DELETE"]
+  },
+  "401": {
+    "code": 401,
+    "name": "Unauthorized",
+    "category": "Client Error",
+    "description": "Client must authenticate itself to get the requested response.",
+    "example": "Request without valid bearer token.",
+    "methods": ["GET", "POST", "PUT", "DELETE"]
+  },
+  "402": {
+    "code": 402,
+    "name": "Payment Required",
+    "category": "Client Error",
+    "description": "Reserved for digital payment systems; rarely used.",
+    "example": "Premium API usage requiring payment.",
+    "methods": ["GET", "POST"]
+  },
+  "403": {
+    "code": 403,
+    "name": "Forbidden",
+    "category": "Client Error",
+    "description": "Server understood request but refuses to authorize.",
+    "example": "Accessing admin page without permissions.",
+    "methods": ["GET", "POST"]
+  },
+  "404": {
+    "code": 404,
+    "name": "Not Found",
+    "category": "Client Error",
+    "description": "Server cannot find requested resource.",
+    "example": "User requests non-existent URL.",
+    "methods": ["GET"]
+  },
+  "405": {
+    "code": 405,
+    "name": "Method Not Allowed",
+    "category": "Client Error",
+    "description": "Method is known but not supported by target resource.",
+    "example": "DELETE on a read-only endpoint.",
+    "methods": ["GET"]
+  },
+  "406": {
+    "code": 406,
+    "name": "Not Acceptable",
+    "category": "Client Error",
+    "description": "After content negotiation, no acceptable response found.",
+    "example": "Client requests XML but server only provides JSON.",
+    "methods": ["GET"]
+  },
+  "407": {
+    "code": 407,
+    "name": "Proxy Authentication Required",
+    "category": "Client Error",
+    "description": "Client must authenticate with proxy before accessing resource.",
+    "example": "Network uses proxy that requires login.",
+    "methods": ["GET"]
+  },
+  "408": {
+    "code": 408,
+    "name": "Request Timeout",
+    "category": "Client Error",
+    "description": "Server timed out waiting for client’s request to arrive.",
+    "example": "Client connection idle too long.",
+    "methods": ["GET"]
+  },
+  "409": {
+    "code": 409,
+    "name": "Conflict",
+    "category": "Client Error",
+    "description": "Request conflicts with current state of server.",
+    "example": "Version mismatch in update.",
+    "methods": ["PUT", "POST"]
+  },
+  "410": {
+    "code": 410,
+    "name": "Gone",
+    "category": "Client Error",
+    "description": "Resource is permanently removed, no forwarding address.",
+    "example": "Deleted resource with no replacement.",
+    "methods": ["GET"]
+  },
+  "411": {
+    "code": 411,
+    "name": "Length Required",
+    "category": "Client Error",
+    "description": "Server refuses request without Content-Length header.",
+    "example": "POST without specifying content length.",
+    "methods": ["POST", "PUT"]
+  },
+  "412": {
+    "code": 412,
+    "name": "Precondition Failed",
+    "category": "Client Error",
+    "description": "Precondition given in headers is false.",
+    "example": "If-Match header does not match resource version.",
+    "methods": ["PUT"]
+  },
+  "413": {
+    "code": 413,
+    "name": "Content Too Large",
+    "category": "Client Error",
+    "description": "Request entity is larger than server’s limits.",
+    "example": "Uploading file too big.",
+    "methods": ["POST", "PUT"]
+  },
+  "414": {
+    "code": 414,
+    "name": "URI Too Long",
+    "category": "Client Error",
+    "description": "URI requested is longer than server is willing to interpret.",
+    "example": "Overly long query string.",
+    "methods": ["GET"]
+  },
+  "415": {
+    "code": 415,
+    "name": "Unsupported Media Type",
+    "category": "Client Error",
+    "description": "Media format of request is unsupported.",
+    "example": "Server expects JSON but gets XML.",
+    "methods": ["POST", "PUT"]
+  },
+  "416": {
+    "code": 416,
+    "name": "Range Not Satisfiable",
+    "category": "Client Error",
+    "description": "Range header specifies a range not available in target resource.",
+    "example": "Request bytes beyond file length.",
+    "methods": ["GET"]
+  },
+  "417": {
+    "code": 417,
+    "name": "Expectation Failed",
+    "category": "Client Error",
+    "description": "Server cannot meet requirements given in Expect header.",
+    "example": "Expect: 100-continue cannot be met.",
+    "methods": ["POST", "PUT"]
+  },
+  "418": {
+    "code": 418,
+    "name": "I'm a teapot",
+    "category": "Client Error",
+    "description": "An April Fools’ joke. “Teapot” refuses to brew coffee.",
+    "example": "Client sends brew command to teapot.",
+    "methods": ["GET"]
+  },
+  "421": {
+    "code": 421,
+    "name": "Misdirected Request",
+    "category": "Client Error",
+    "description": "Request was directed to a server that can’t produce a response.",
+    "example": "Server not configured for this host-target combination.",
+    "methods": ["GET"]
+  },
+  "422": {
+    "code": 422,
+    "name": "Unprocessable Content",
+    "category": "Client Error",
+    "description": "Request is well-formed but cannot be followed due to semantic errors.",
+    "example": "Validation error in API payload.",
+    "methods": ["POST", "PUT"]
+  },
+  "423": {
+    "code": 423,
+    "name": "Locked",
+    "category": "Client Error",
+    "description": "Resource that is being accessed is locked.",
+    "example": "Editing a locked document.",
+    "methods": ["PUT"]
+  },
+  "424": {
+    "code": 424,
+    "name": "Failed Dependency",
+    "category": "Client Error",
+    "description": "Request failed due to failure of a previous request.",
+    "example": "Chained WebDAV operation fails because earlier part fails.",
+    "methods": ["PUT"]
+  },
+  "425": {
+    "code": 425,
+    "name": "Too Early",
+    "category": "Client Error",
+    "description": "Server is unwilling to risk replay of early request.",
+    "example": "Request sent too early during speculative pre-connect.",
+    "methods": ["GET"]
+  },
+  "426": {
+    "code": 426,
+    "name": "Upgrade Required",
+    "category": "Client Error",
+    "description": "Client should switch to a different protocol.",
+    "example": "Server requires TLS, client attempted plain HTTP.",
+    "methods": ["GET", "POST"]
+  },
+  "428": {
+    "code": 428,
+    "name": "Precondition Required",
+    "category": "Client Error",
+    "description": "Origin server requires request to be conditional.",
+    "example": "Prevent lost update by requiring If-Match.",
+    "methods": ["PUT", "PATCH"]
+  },
+  "429": {
+    "code": 429,
+    "name": "Too Many Requests",
+    "category": "Client Error",
+    "description": "User has sent too many requests in a given time frame (rate limiting).",
+    "example": "API throttle limit exceeded.",
+    "methods": ["GET", "POST", "PUT", "DELETE"]
+  },
+  "431": {
+    "code": 431,
+    "name": "Request Header Fields Too Large",
+    "category": "Client Error",
+    "description": "Server refuses to process request because header fields are too large.",
+    "example": "Too many cookies sent.",
+    "methods": ["GET", "POST"]
+  },
+  "451": {
+    "code": 451,
+    "name": "Unavailable For Legal Reasons",
+    "category": "Client Error",
+    "description": "Resource cannot be provided for legal reasons (e.g. censorship).",
+    "example": "Content blocked by government order.",
+    "methods": ["GET"]
+  },
+  "500": {
+    "code": 500,
+    "name": "Internal Server Error",
+    "category": "Server Error",
+    "description": "Generic error when server encounters an unexpected condition.",
+    "example": "Unhandled exception on server.",
+    "methods": ["GET", "POST", "PUT", "DELETE"]
+  },
+  "501": {
+    "code": 501,
+    "name": "Not Implemented",
+    "category": "Server Error",
+    "description": "Server does not support the functionality required to fulfill request.",
+    "example": "Server does not support method thrown by client.",
+    "methods": ["GET", "POST"]
+  },
+  "502": {
+    "code": 502,
+    "name": "Bad Gateway",
+    "category": "Server Error",
+    "description": "Server, acting as gateway, got an invalid response from upstream.",
+    "example": "Reverse proxy gets bad response from backend.",
+    "methods": ["GET", "POST"]
+  },
+  "503": {
+    "code": 503,
+    "name": "Service Unavailable",
+    "category": "Server Error",
+    "description": "Server is not ready to handle request (overload or maintenance).",
+    "example": "Server maintenance mode.",
+    "methods": ["GET", "POST"]
+  },
+  "504": {
+    "code": 504,
+    "name": "Gateway Timeout",
+    "category": "Server Error",
+    "description": "Server, acting as gateway, did not receive timely response from upstream.",
+    "example": "Backend service too slow.",
+    "methods": ["GET", "POST"]
+  },
+  "505": {
+    "code": 505,
+    "name": "HTTP Version Not Supported",
+    "category": "Server Error",
+    "description": "Server does not support the HTTP protocol version used in request.",
+    "example": "Client uses HTTP/0.9.",
+    "methods": ["GET", "POST"]
+  },
+  "506": {
+    "code": 506,
+    "name": "Variant Also Negotiates",
+    "category": "Server Error",
+    "description": "Configured variant is itself configured to negotiate, leading to circular reference.",
+    "example": "Misconfigured content negotiation setup.",
+    "methods": ["GET"]
+  },
+  "507": {
+    "code": 507,
+    "name": "Insufficient Storage",
+    "category": "Server Error",
+    "description": "Server unable to store representation needed to complete request.",
+    "example": "No disk space to save uploaded file.",
+    "methods": ["POST", "PUT"]
+  },
+  "508": {
+    "code": 508,
+    "name": "Loop Detected",
+    "category": "Server Error",
+    "description": "Server detected an infinite loop while processing request.",
+    "example": "Recursive module import causing loop in WebDAV.",
+    "methods": ["GET"]
+  },
+  "510": {
+    "code": 510,
+    "name": "Not Extended",
+    "category": "Server Error",
+    "description": "Client request requires extension which server does not support.",
+    "example": "Missing extension header as required by server policy.",
+    "methods": ["GET", "POST"]
+  },
+  "511": {
+    "code": 511,
+    "name": "Network Authentication Required",
+    "category": "Server Error",
+    "description": "Client needs to authenticate to gain network access.",
+    "example": "Captive portal requires login.",
+    "methods": ["GET"]
+  }
+}

@@ -486,5 +486,13 @@
     "description": "Client needs to authenticate to gain network access.",
     "example": "Captive portal requires login.",
     "methods": ["GET"]
+  },
+  "520": {
+    "code": 520,
+    "name": "Unexpected Response",
+    "category": "Server Error",
+    "description": "Origin server returned an empty or unknown response to Cloudflare.",
+    "example": "Origin responded without a valid HTTP status.",
+    "methods": ["GET", "POST", "PUT", "DELETE"]
   }
 }
